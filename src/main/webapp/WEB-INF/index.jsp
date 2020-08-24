@@ -1,0 +1,69 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ taglib prefix= "c" uri = "http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%> 
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %> 
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="/webjars/bootstrap/4.5.0/css/bootstrap.min.css">
+<script src="/webjars/jquery/3.5.1/jquery.min.js"></script>
+<script src="/webjars/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="/css/style.css" />
+<title>CookBook</title>
+</head>
+<body>
+    <div class="container">
+    	<div class="jumbotron bg-dark text-light">
+    		<h1>CookBook</h1>
+    	</div>
+    	<div class="row">
+	        <div class="col">
+	    		<h5 class="text-center">Register</h5>
+	            <form:form action="/register" method="post" modelAttribute="user">
+	                <div class="form-group">
+	                    <label>Username:</label>
+	                    <form:input path="username" class="form-control" />
+	                    <form:errors path="username" class="text-danger" />
+	                </div>
+	                <div class="form-group">
+                        <label>Email:</label>
+                        <form:input path="email" class="form-control" />
+                        <form:errors path="email" class="text-danger" />
+                    </div>
+                    <div class="form-group">
+                        <label>Password:</label>
+                        <form:password path="password" class="form-control" />
+                        <form:errors path="password" class="text-danger" />
+                    </div>
+                    <div class="form-group">
+                        <label>Confirm Password:</label>
+                        <form:password path="confirm" class="form-control" />
+                        <form:errors path="confirm" class="text-danger" />
+                    </div>
+	                <input type="submit" value="Sign Up" class="btn btn-info" />
+	            </form:form>
+	        </div>
+	        <div class="col">
+	        	<h5 class="text-center">Login</h5>
+	            <form action="/login" method="post">
+	                <c:if test="${loginError != null}">
+	                    <p class="text-danger">${loginError}</p>
+	                </c:if>
+	                <div class="form-group">
+                        <label>Email:</label>
+                        <input type="text" name="email" class="form-control" />
+                    </div>
+	                <div class="form-group">
+                        <label>Password:</label>
+                        <input type="password" name="password" class="form-control" />
+                    </div>
+                    <input type="submit" value="Sign In" class="btn btn-info" />
+	            </form>
+	        </div>
+	     </div>
+	</div>
+</body>
+</html>
